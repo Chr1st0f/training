@@ -1,0 +1,4 @@
+192.168.1.170 prometheus.test
+192.168.1.168 gitlab.test
+127.0.0.1 localhost gitlab.local3
+127.0.0.1 localhost gitlab.local

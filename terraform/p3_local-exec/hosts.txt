@@ -1,0 +1,2 @@
+127.0.0.2 tutu.com tutu
+127.0.0.1 localhost gitlab.local
