@@ -1,7 +1,8 @@
-# ssh_host            = "gdc05509"
-# ssh_user            = "itsdeploy"
-# ssh_key             = "~/.ssh/id_rsa_itsdeploy"
+variable "ssh_host" {}
+variable "ssh_user" {}
+variable "ssh_key" {}
 
-# src_dir             = "./binaries"
-# dst_dir             = "/tmp"
-# docker_file         = "get-docker.sh"
+variable "src_dir" {}
+variable "dst_dir" {}
+variable "docker_file" {}
+variable "docker_repo" {}

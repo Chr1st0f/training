@@ -1,4 +1,3 @@
-
 resource "null_resource" "ssh_target" {
     connection {
         type        =   "ssh"
@@ -8,14 +7,15 @@ resource "null_resource" "ssh_target" {
     }
 
     provisioner "file" {
-        source      =   var.docker_file
+        source      =   "${path.module}/${var.docker_file}"
         destination =   "${var.dst_dir}/${var.docker_file}"
     }
     provisioner "remote-exec" {
         inline = [
+            "sudo rm -f ${var.docker_repo}",
             "sudo apt update -qq >/dev/null",
             "sudo chmod +x ${var.dst_dir}/${var.docker_file}",
-            "sudo ${var.dst_dir}/${var.docker_file} >/dev/null"
+            "sudo ${var.dst_dir}/${var.docker_file}"
         ]
     }
 
@@ -24,7 +24,8 @@ resource "null_resource" "ssh_target" {
         inline = [
             "sudo systemctl enable docker",
             "sudo systemctl restart docker",
-            "sudo usermod -aG docker ${var.ssh_user}"
+            "sudo usermod -aG docker ${var.ssh_user}",
+            "sudo rm -f ${var.docker_repo}"
         ]
     }
 }
