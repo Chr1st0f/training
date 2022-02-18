@@ -18,3 +18,8 @@ module "docker_install" {
     docker_file = var.docker_file
     docker_repo = var.docker_repo
 }
+
+module "docker_run" {
+    source = "./modules/docker_run" 
+    ssh_host = var.ssh_host
+}
